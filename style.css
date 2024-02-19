@@ -1,0 +1,78 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  height: 80vh;
+  display: flex;
+  margin: 50px;
+  align-items: center;
+  justify-content: right;
+  background-image: url(images/background.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.container {
+  width: 400px;
+  height: 400px;
+  padding: 30px;
+  background: transparent;
+  border: 2px solid #304558;
+  border-radius: 10px;
+  /* backdrop-filter: blur(15px); */
+}
+
+h1 {
+  color: #eee;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.todo-input {
+  flex: 1;
+  outline: none;
+  padding: 10px 10px 10px 20px;
+  background-color: transparent;
+  border: 2px solid #304558;
+  border-radius: 30px;
+  color: #eee;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.todo-input::placeholder {
+  color: #bfbfbf;
+}
+
+.add-btn {
+  border: none;
+  outline: none;
+  background: #304558;
+  color: #fff;
+  font-size: 35px;
+  cursor: pointer;
+  border-radius: 40px;
+  width: 40px;
+  height: 40px;
+}
+
+.empty-image {
+  width: 200px;
+}
+
+.todos-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
