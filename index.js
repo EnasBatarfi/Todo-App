@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 const todosList = [
   { description: "I want to improve my skills", done: false },
-  { description: "I want to do my laundry and skin care rotein", done: false },
-  { description: "I have to go to do my nails", done: false },
+  { description: "I want to do my laundry and skin care", done: false },
+  { description: "I have to go to do my nails", done: true },
   { description: "I have to go to do my nails", done: false },
   { description: "I have to go to do my nails", done: false },
   { description: "I have to go to do my nails", done: false },
@@ -10,8 +10,11 @@ const todosList = [
 
 const mainContainer = document.getElementById("container");
 const todosContainer = document.getElementById("todos-container");
+const addButton = document.getElementById("add-btn");
+const todoInput = document.getElementById("todo-input");
 
 function displayTodos() {
+  todosContainer.innerHTML = "";
   if (todosList.length > 0) {
     for (let i = 0; i < todosList.length; i++) {
       const todoRow = document.createElement("div");
@@ -19,6 +22,7 @@ function displayTodos() {
 
       const doneCheckbox = document.createElement("input");
       doneCheckbox.type = "checkbox";
+      doneCheckbox.checked = todosList[i].done;
       todoRow.appendChild(doneCheckbox);
 
       const todoText = document.createElement("p");
@@ -41,4 +45,18 @@ function displayTodos() {
   }
 }
 
+function addTodo() {
+  const newTodo = todoInput.value;
+  if (newTodo.trim() !== "") {
+    const todo = { description: newTodo, done: false };
+    todosList.push(todo);
+    displayTodos();
+    todoInput.value = ""; // Clear the input after adding
+  } else {
+    alert("Please enter a todo item.");
+  }
+}
+
+// --------------------------------Main-----------------------------
 displayTodos();
+addButton.addEventListener("click", addTodo);
