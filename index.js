@@ -30,16 +30,17 @@ function displayTodos() {
       todoText.textContent = todosList[i].description;
       todoRow.appendChild(todoText);
 
+      const editButton = document.createElement("button");
+      editButton.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
+      editButton.className = "row-btn";
+      // editButton.addEventListener("click", () => editTodo(i));
+      todoRow.appendChild(editButton);
+
       const deleteButton = document.createElement("button");
       deleteButton.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
       deleteButton.className = "row-btn";
       deleteButton.addEventListener("click", () => deleteTodo(i));
       todoRow.appendChild(deleteButton);
-
-      const editButton = document.createElement("button");
-      editButton.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
-      editButton.className = "row-btn";
-      todoRow.appendChild(editButton);
 
       todosContainer.appendChild(todoRow);
       mainContainer.appendChild(todosContainer);
@@ -68,6 +69,11 @@ function deleteTodo(index) {
   todosList.splice(index, 1);
   displayTodos();
 }
+
+// function editTodo(index) {
+// const editInput=document.createElement("input");
+
+// }
 
 // --------------------------------Main-----------------------------
 displayTodos();
