@@ -12,6 +12,7 @@ const mainContainer = document.getElementById("container");
 const todosContainer = document.getElementById("todos-container");
 const addButton = document.getElementById("add-btn");
 const todoInput = document.getElementById("todo-input");
+const deleteButton = document.getElementsByClassName("row-btn")[0];
 
 function displayTodos() {
   todosContainer.innerHTML = "";
@@ -32,6 +33,7 @@ function displayTodos() {
       const deleteButton = document.createElement("button");
       deleteButton.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
       deleteButton.className = "row-btn";
+      deleteButton.addEventListener("click", () => deleteTodo(i));
       todoRow.appendChild(deleteButton);
 
       const editButton = document.createElement("button");
@@ -47,14 +49,24 @@ function displayTodos() {
 
 function addTodo() {
   const newTodo = todoInput.value;
+  console.log(newTodo.length);
   if (newTodo.trim() !== "") {
-    const todo = { description: newTodo, done: false };
-    todosList.push(todo);
-    displayTodos();
-    todoInput.value = ""; // Clear the input after adding
+    if (newTodo.length <= 100) {
+      const todo = { description: newTodo, done: false };
+      todosList.push(todo);
+      displayTodos();
+      todoInput.value = "";
+    } else {
+      alert("Todo description exceeds the maximum allowed length!");
+    }
   } else {
-    alert("Please enter a todo item.");
+    alert("Cannot add an empty todo item!");
   }
+}
+
+function deleteTodo(index) {
+  todosList.splice(index, 1);
+  displayTodos();
 }
 
 // --------------------------------Main-----------------------------
