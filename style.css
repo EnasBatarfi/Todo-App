@@ -75,14 +75,9 @@ h1 {
   align-items: start;
 }
 #todo-row {
-  display: flex;
-  max-width: 380px;
+  display: grid;
+  grid-template-columns: 20% 50% 20% 20%;
   justify-content: space-between;
   margin: 5px;
   gap: 5px;
-}
-
-#todo-row input {
-  width: 15px;
-  height: 15px;
 }

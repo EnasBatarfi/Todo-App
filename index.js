@@ -5,7 +5,6 @@ const todosList = [
   { description: "I have to go to do my nails", done: false },
   { description: "I have to go to do my nails", done: false },
   { description: "I have to go to do my nails", done: false },
-  { description: "I have to go to do my nails", done: false },
 ];
 
 const mainContainer = document.getElementById("container");
