@@ -16,6 +16,7 @@ const deleteButton = document.getElementsByClassName("delete-btn")[0];
 const inputContainer = document.getElementById("input-container");
 const searchContainer = document.getElementById("search-container");
 const searchInput = document.getElementById("search-input");
+const counter = document.getElementById("counter");
 
 function displayTodos() {
   todosContainer.innerHTML = "";
@@ -54,6 +55,8 @@ function displayTodos() {
     } catch (error) {
       alert("Error happened when displaying the todo list: " + error.message);
     }
+    counter.textContent = `You have ${todosList.length} tasks.`;
+    mainContainer.appendChild(counter);
   }
 }
 
@@ -104,14 +107,16 @@ function deleteTodo(index) {
 
 // --------------------------------Main-----------------------------
 // to not refresh the page after submit the form
-try {
-  todosList = JSON.parse(localStorage.getItem("todoList"));
-  inputContainer.addEventListener("submit", function (event) {
-    event.preventDefault();
-  });
-  addButton.addEventListener("click", addTodo);
-} catch (error) {
-  alert("Unknown error happened: " + error.message);
-} finally {
-  displayTodos();
-}
+window.addEventListener("DOMContentLoaded", () => {
+  try {
+    todosList = JSON.parse(localStorage.getItem("todoList"));
+    inputContainer.addEventListener("submit", function (event) {
+      event.preventDefault();
+    });
+    addButton.addEventListener("click", addTodo);
+  } catch (error) {
+    alert("Unknown error happened: " + error.message);
+  } finally {
+    displayTodos();
+  }
+});

@@ -1,3 +1,6 @@
+* {
+  font-family: "Lato";
+}
 *,
 *::before,
 *::after {
@@ -51,6 +54,7 @@ h1 {
   color: #eee;
   text-align: center;
   margin-bottom: 10px;
+  font-family: "Rubik";
 }
 
 #input-container {
@@ -148,4 +152,10 @@ h1 {
 #todo-row input[type="checkbox"] {
   width: 20px;
   height: 20px;
+}
+#counter {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-size: x-small;
 }
