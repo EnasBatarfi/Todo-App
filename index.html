@@ -18,13 +18,20 @@
   <body>
     <div id="container">
       <h1>Todo List</h1>
-      <div id="input-container">
+      <form id="input-container">
         <label for="text" id="todo-label"></label>
         <input type="text" id="todo-input" placeholder="Add a new task..." />
-        <button id="add-btn">
+        <button id="add-btn" type="submit">
           <i class="fa-solid fa-circle-plus"></i>
         </button>
-      </div>
+      </form>
+      <form id="search-container">
+        <label for="text" id="todo-search"></label>
+        <input type="text" id="search-input" placeholder="Search for todo..." />
+        <button id="search-btn" type="submit" s>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
       <div id="todos-container">
         <!-- <ul id="todos"></ul> -->
         <!-- <img src="images/empty3.svg" alt="empty image" class="empty-image" /> -->

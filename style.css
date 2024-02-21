@@ -8,7 +8,6 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  height: 80vh;
   display: flex;
   margin: 50px;
   align-items: center;
@@ -20,8 +19,7 @@ body {
 
 #container {
   background-color: rgba(207, 206, 206, 0.2);
-  width: 500px;
-  height: 500px;
+  /* width: 100%; */
   padding: 30px;
   /* background: transparent; */
   border: 2px solid #304558;
@@ -58,7 +56,7 @@ h1 {
 #input-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 #todo-input {
@@ -73,6 +71,7 @@ h1 {
   margin-right: 10px;
 }
 
+#search-input::placeholder,
 #todo-input::placeholder {
   color: #bfbfbf;
 }
@@ -90,6 +89,33 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#search-container {
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+#search-input {
+  flex: 0.5;
+  outline: none;
+  background-color: transparent;
+  padding: 10px 10px 10px 20px;
+  border: 2px solid #304558;
+  border-radius: 30px;
+  color: #eee;
+  font-size: 14px;
+  margin-right: 10px;
+}
+#search-btn {
+  border: none;
+  outline: none;
+  /* background: #304558; */
+  margin-left: 4px;
+  background-color: transparent;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 .row-btn {
