@@ -159,3 +159,7 @@ h1 {
   align-items: end;
   font-size: x-small;
 }
+
+#checked-todo {
+  text-decoration: line-through;
+}

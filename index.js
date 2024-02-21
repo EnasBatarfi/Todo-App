@@ -16,30 +16,41 @@ const deleteButton = document.getElementsByClassName("delete-btn")[0];
 const inputContainer = document.getElementById("input-container");
 const searchContainer = document.getElementById("search-container");
 const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-btn");
 const counter = document.getElementById("counter");
 
-function displayTodos() {
+function displayTodos(todosList) {
   todosContainer.innerHTML = "";
   if (todosList.length > 0) {
     try {
-      for (let i = 0; i < todosList.length; i++) {
+      todosList.forEach((todo, i) => {
         const todoRow = document.createElement("div");
         todoRow.id = "todo-row";
 
         const doneCheckbox = document.createElement("input");
         doneCheckbox.type = "checkbox";
         doneCheckbox.checked = todosList[i].done;
+        doneCheckbox.addEventListener("change", () => {
+          todo.done = doneCheckbox.checked;
+          localStorage.setItem("todoList", JSON.stringify(todosList));
+          // call display todo to apply the style of line through
+          displayTodos(todosList);
+        });
         todoRow.appendChild(doneCheckbox);
 
         const todoText = document.createElement("p");
-        todoText.textContent = todosList[i].description;
+        todoText.textContent = todo.description;
+        if (todo.done) {
+          // Apply style if todo is done
+          todoText.style.textDecoration = "line-through";
+        }
         todoRow.appendChild(todoText);
 
         const editButton = document.createElement("button");
         editButton.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
         editButton.id = "delete-btn";
         editButton.className = "row-btn";
-        // editButton.addEventListener("click", () => editTodo(i));
+        editButton.addEventListener("click", () => editTodo(i));
         todoRow.appendChild(editButton);
 
         const deleteButton = document.createElement("button");
@@ -51,13 +62,16 @@ function displayTodos() {
 
         todosContainer.appendChild(todoRow);
         mainContainer.appendChild(todosContainer);
-      }
+      });
+      counter.textContent = `You have ${todosList.length} tasks.`;
+      mainContainer.appendChild(counter);
     } catch (error) {
       alert("Error happened when displaying the todo list: " + error.message);
     }
-    counter.textContent = `You have ${todosList.length} tasks.`;
-    mainContainer.appendChild(counter);
   }
+
+  counter.textContent = `You have ${todosList.length} tasks.`;
+  mainContainer.appendChild(counter);
 }
 
 function addTodo() {
@@ -66,7 +80,7 @@ function addTodo() {
     if (newTodo.length <= 100) {
       const todo = { description: newTodo, done: false };
       todosList.push(todo);
-      displayTodos();
+      displayTodos(todosList);
       todoInput.value = "";
       localStorage.setItem("todoList", JSON.stringify(todosList));
     } else {
@@ -79,44 +93,52 @@ function addTodo() {
 
 function deleteTodo(index) {
   todosList.splice(index, 1);
-  displayTodos();
+  displayTodos(todosList);
   localStorage.setItem("todoList", JSON.stringify(todosList));
 }
 
-// function searchTodo() {
-//   const newTodo = searchInput.value;
-//   console.log(newTodo.length);
-//   if (newTodo.trim() !== "") {
-//     if (newTodo.length <= 100) {
-//       const todo = { description: newTodo, done: false };
-//       // todosList.filter(())
-//       displayTodos();
-//       todoInput.value = "";
-//     } else {
-//       alert("Todo description exceeds the maximum allowed length!");
-//     }
-//   } else {
-//     alert("Cannot add an empty todo item!");
-//   }
-// }
+function searchTodo() {
+  const searchTerm = searchInput.value.trim();
+  const searchedList = todosList.filter((todo) =>
+    todo.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  displayTodos(searchedList);
+  searchInput.value = "";
+}
 
-// function editTodo(index) {
-// const editInput=document.createElement("input");
+function editTodo(index) {
+  const updatedTodo = prompt("editTodo", todosList[index].description);
+  if (updatedTodo.trim() !== "") {
+    if (updatedTodo.length <= 100) {
+      todosList[index].description = updatedTodo;
+      localStorage.setItem("todoList", JSON.stringify(todosList));
+      displayTodos(todosList);
+    } else {
+      alert("Todo description exceeds the maximum allowed length!");
+    }
+  } else {
+    alert("Cannot add an empty todo item!");
+  }
+}
 
-// }
+function doneCheck(index) {}
 
 // --------------------------------Main-----------------------------
 // to not refresh the page after submit the form
 window.addEventListener("DOMContentLoaded", () => {
   try {
+    searchContainer.addEventListener("submit", (event) =>
+      event.preventDefault()
+    );
+    searchButton.addEventListener("click", searchTodo);
     todosList = JSON.parse(localStorage.getItem("todoList"));
-    inputContainer.addEventListener("submit", function (event) {
-      event.preventDefault();
-    });
+    inputContainer.addEventListener("submit", (event) =>
+      event.preventDefault()
+    );
     addButton.addEventListener("click", addTodo);
   } catch (error) {
     alert("Unknown error happened: " + error.message);
   } finally {
-    displayTodos();
+    displayTodos(todosList);
   }
 });
