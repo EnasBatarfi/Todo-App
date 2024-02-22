@@ -18,23 +18,24 @@ const searchContainer = document.getElementById("search-container");
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-btn");
 const counter = document.getElementById("counter");
+const todosFooter = document.getElementById("todos-footer");
+const clearButton = document.getElementById("clear-btn");
 
-function displayTodos(todosList) {
+function displayTodos(todos) {
   todosContainer.innerHTML = "";
   if (todosList.length > 0) {
     try {
-      todosList.forEach((todo, i) => {
+      todos.forEach((todo, i) => {
         const todoRow = document.createElement("div");
         todoRow.id = "todo-row";
-
         const doneCheckbox = document.createElement("input");
         doneCheckbox.type = "checkbox";
-        doneCheckbox.checked = todosList[i].done;
+        doneCheckbox.checked = todo.done;
         doneCheckbox.addEventListener("change", () => {
           todo.done = doneCheckbox.checked;
           localStorage.setItem("todoList", JSON.stringify(todosList));
           // call display todo to apply the style of line through
-          displayTodos(todosList);
+          displayTodos(todos);
         });
         todoRow.appendChild(doneCheckbox);
 
@@ -50,28 +51,41 @@ function displayTodos(todosList) {
         editButton.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
         editButton.id = "delete-btn";
         editButton.className = "row-btn";
-        editButton.addEventListener("click", () => editTodo(i));
+        editButton.addEventListener("click", () =>
+          editTodo(todosList.indexOf(todo))
+        );
         todoRow.appendChild(editButton);
 
         const deleteButton = document.createElement("button");
-        deleteButton.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
+        deleteButton.innerHTML = '<i class="fa-regular fa-square-minus"></i>';
         deleteButton.id = "edit-btn";
         deleteButton.className = "row-btn";
-        deleteButton.addEventListener("click", () => deleteTodo(i));
+        deleteButton.addEventListener("click", () =>
+          deleteTodo(todosList.indexOf(todo))
+        );
         todoRow.appendChild(deleteButton);
 
         todosContainer.appendChild(todoRow);
         mainContainer.appendChild(todosContainer);
       });
-      counter.textContent = `You have ${todosList.length} tasks.`;
-      mainContainer.appendChild(counter);
+      counter.textContent = `You have ${todos.length} tasks.`;
+      todosFooter.appendChild(counter);
+      mainContainer.appendChild(todosFooter);
+
+      clearButton.addEventListener("click", clearAll);
+      todosFooter.appendChild(clearButton);
+      mainContainer.appendChild(todosFooter);
     } catch (error) {
       alert("Error happened when displaying the todo list: " + error.message);
     }
   }
+  counter.textContent = `You have ${todos.length} tasks.`;
+  todosFooter.appendChild(counter);
+  mainContainer.appendChild(todosFooter);
 
-  counter.textContent = `You have ${todosList.length} tasks.`;
-  mainContainer.appendChild(counter);
+  clearButton.addEventListener("click", clearAll);
+  todosFooter.appendChild(clearButton);
+  mainContainer.appendChild(todosFooter);
 }
 
 function addTodo() {
@@ -79,7 +93,7 @@ function addTodo() {
   if (newTodo.trim() !== "") {
     if (newTodo.length <= 100) {
       const todo = { description: newTodo, done: false };
-      todosList.push(todo);
+      todosList.unshift(todo);
       displayTodos(todosList);
       todoInput.value = "";
       localStorage.setItem("todoList", JSON.stringify(todosList));
@@ -93,6 +107,12 @@ function addTodo() {
 
 function deleteTodo(index) {
   todosList.splice(index, 1);
+  displayTodos(todosList);
+  localStorage.setItem("todoList", JSON.stringify(todosList));
+}
+
+function clearAll() {
+  todosList.splice(0, todosList.length);
   displayTodos(todosList);
   localStorage.setItem("todoList", JSON.stringify(todosList));
 }

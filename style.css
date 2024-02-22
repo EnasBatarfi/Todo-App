@@ -163,3 +163,36 @@ h1 {
 #checked-todo {
   text-decoration: line-through;
 }
+
+#clear-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#todos-footer {
+  gap: 10px;
+  display: grid;
+  grid-template-rows: auto auto; /* Two rows, first row auto height, second row takes remaining space */
+  grid-template-columns: auto auto; /* Two columns */
+  align-items: center;
+  margin-top: 15px;
+}
+
+#todos-footer hr {
+  grid-column: 1 / span 2; /* Spanning both columns */
+}
+
+#todos-footer .counter {
+  grid-area: counter; /* Placing counter in the defined grid area */
+}
+
+#todos-footer .clear-btn {
+  grid-area: clear-btn; /* Placing clear-btn in the defined grid area */
+}
