@@ -31,12 +31,9 @@ function displayTodos(todos) {
         const doneCheckbox = document.createElement("input");
         doneCheckbox.type = "checkbox";
         doneCheckbox.checked = todo.done;
-        doneCheckbox.addEventListener("change", () => {
-          todo.done = doneCheckbox.checked;
-          localStorage.setItem("todoList", JSON.stringify(todosList));
-          // call display todo to apply the style of line through
-          displayTodos(todos);
-        });
+        doneCheckbox.addEventListener("change", () =>
+          doneCheck(doneCheckbox, todosList.indexOf(todo))
+        );
         todoRow.appendChild(doneCheckbox);
 
         const todoText = document.createElement("p");
@@ -49,7 +46,7 @@ function displayTodos(todos) {
 
         const editButton = document.createElement("button");
         editButton.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
-        editButton.id = "delete-btn";
+        editButton.id = "edit-btn";
         editButton.className = "row-btn";
         editButton.addEventListener("click", () =>
           editTodo(todosList.indexOf(todo))
@@ -58,7 +55,7 @@ function displayTodos(todos) {
 
         const deleteButton = document.createElement("button");
         deleteButton.innerHTML = '<i class="fa-regular fa-square-minus"></i>';
-        deleteButton.id = "edit-btn";
+        deleteButton.id = "delete-btn";
         deleteButton.className = "row-btn";
         deleteButton.addEventListener("click", () =>
           deleteTodo(todosList.indexOf(todo))
@@ -68,13 +65,6 @@ function displayTodos(todos) {
         todosContainer.appendChild(todoRow);
         mainContainer.appendChild(todosContainer);
       });
-      counter.textContent = `You have ${todos.length} tasks.`;
-      todosFooter.appendChild(counter);
-      mainContainer.appendChild(todosFooter);
-
-      clearButton.addEventListener("click", clearAll);
-      todosFooter.appendChild(clearButton);
-      mainContainer.appendChild(todosFooter);
     } catch (error) {
       alert("Error happened when displaying the todo list: " + error.message);
     }
@@ -141,11 +131,16 @@ function editTodo(index) {
   }
 }
 
-function doneCheck(index) {}
+function doneCheck(doneCheckbox, index) {
+  todosList[index].done = doneCheckbox.checked;
+  localStorage.setItem("todoList", JSON.stringify(todosList));
+  // call display todo to apply the style of line through
+  displayTodos(todosList);
+}
 
 // --------------------------------Main-----------------------------
 // to not refresh the page after submit the form
-window.addEventListener("DOMContentLoaded", () => {
+addEventListener("DOMContentLoaded", () => {
   try {
     searchContainer.addEventListener("submit", (event) =>
       event.preventDefault()
