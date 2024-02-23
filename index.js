@@ -67,7 +67,7 @@ function displayTodos(todos) {
   if (todos.length === 0) {
     // If todos list is empty then display the empty image
     // To ensure the empty image is always appended to the todo container when needed
-    emptyImage.src = "./images/1763838.png";
+    emptyImage.src = "images/1763838.png";
     emptyImage.alt = "empty image";
     emptyImage.id = "empty-image";
     todosContainer.appendChild(emptyImage);
