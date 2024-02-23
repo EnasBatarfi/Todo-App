@@ -1,198 +1,177 @@
+/* Reset styles */
 * {
-  font-family: "Lato";
-}
-*,
-*::before,
-*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Body styles */
 body {
-  font-family: "Roboto", sans-serif;
-  display: flex;
-  margin: 50px;
-  align-items: center;
-  justify-content: right;
-  background-image: url(images/background.jpg);
-  background-position: center;
-  background-size: cover;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e0e9f0;
 }
 
+/* Container styles */
 #container {
-  background-color: rgba(207, 206, 206, 0.2);
-  /* width: 100%; */
-  padding: 30px;
-  /* background: transparent; */
-  border: 2px solid #304558;
-  border-radius: 10px;
-  /* backdrop-filter: blur(15px); */
-}
-
-/* body {
-  font-family: "Roboto", sans-serif;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image: url(images/background.jpg);
-  background-position: center;
-  background-size: cover;
+  max-width: 400px;
   padding: 20px;
-}
-
-#container {
-  padding: 30px;
-  background: rgba(48, 69, 88, 0.8);
-  border: 2px solid #304558;
+  margin: 50px auto;
+  background-color: #fff;
   border-radius: 10px;
-} */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
 
+/* Heading styles */
 h1 {
-  color: #eee;
+  color: #1e88e5;
   text-align: center;
-  margin-bottom: 10px;
-  font-family: "Rubik";
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
-#input-container {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
+/* Subheading styles */
+#header-subtitle {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 20px;
 }
 
-#todo-input {
-  flex: 1;
-  outline: none;
-  padding: 10px 10px 10px 20px;
-  background-color: transparent;
-  border: 2px solid #304558;
-  border-radius: 30px;
-  color: #eee;
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-#search-input::placeholder,
-#todo-input::placeholder {
-  color: #bfbfbf;
-}
-
-#add-btn {
-  border: none;
-  outline: none;
-  background: #304558;
-  color: #fff;
-  font-size: 32px;
-  cursor: pointer;
-  border-radius: 50px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* Input container styles */
+#input-container,
 #search-container {
-  /* background-color: aqua; */
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
+
+/* Input styles */
+#todo-input,
 #search-input {
-  flex: 0.5;
-  outline: none;
-  background-color: transparent;
-  padding: 10px 10px 10px 20px;
-  border: 2px solid #304558;
-  border-radius: 30px;
-  color: #eee;
-  font-size: 14px;
-  margin-right: 10px;
-}
-#search-btn {
-  border: none;
-  outline: none;
-  /* background: #304558; */
-  margin-left: 4px;
-  background-color: transparent;
-  color: #fff;
-  font-size: 15px;
-  cursor: pointer;
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #64b5f6;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
 }
 
+/* Input placeholder styles */
+#search-input::placeholder,
+#todo-input::placeholder {
+  color: #90a4ae;
+}
+
+/* Button styles */
+#add-btn,
+#search-btn,
+#clear-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+/* Add button styles */
+#add-btn {
+  background-color: #1e88e5;
+  color: #ffffff;
+  margin-left: 10px;
+}
+
+/* Search button styles */
+#search-btn {
+  background-color: #42a5f5;
+  color: #ffffff;
+  margin-left: 10px;
+}
+
+/* Clear button styles */
+#clear-btn {
+  background-color: #1976d2;
+  color: #ffffff;
+}
+
+/* Button hover styles */
+#add-btn:hover,
+#search-btn:hover,
+#clear-btn:hover {
+  background-color: #1565c0;
+}
+
+/* Clear button hover styles */
+#clear-btn:hover {
+  background-color: rgb(166, 23, 23);
+}
+
+/* Row button styles */
 .row-btn {
   border: none;
   outline: none;
   background: transparent;
-  color: #fff;
+  color: #363232;
   font-size: 15px;
   cursor: pointer;
 }
 
+/* Todos container styles */
 #todos-container {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: start;
 }
+
+/* Todo row styles */
 #todo-row {
-  width: 100%;
   display: grid;
   grid-template-columns: 10% 70% 10% 10%;
   align-items: center;
-  height: auto;
-  margin-bottom: 15px;
   font-size: large;
   text-align: left;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #bbdefb;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
 }
 
+/* Todo row hover styles */
+#todo-row:hover {
+  background-color: #90caf9;
+}
+
+/* Todo checkbox styles */
 #todo-row input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-}
-#counter {
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  font-size: x-small;
+  margin-right: 10px;
 }
 
+/* Checked todo styles */
 #checked-todo {
   text-decoration: line-through;
 }
 
-#clear-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: #fff;
-  font-size: 15px;
-  cursor: pointer;
-}
-
+/* Todos footer styles */
 #todos-footer {
-  gap: 10px;
-  display: grid;
-  grid-template-rows: auto auto; /* Two rows, first row auto height, second row takes remaining space */
-  grid-template-columns: auto auto; /* Two columns */
+  display: flex;
+  justify-content: end;
   align-items: center;
-  margin-top: 15px;
 }
 
-#todos-footer hr {
-  grid-column: 1 / span 2; /* Spanning both columns */
+/* Counter styles */
+#counter {
+  color: #666;
+  font-size: 14px;
+  flex: 1;
+  text-align: center;
 }
 
-#todos-footer .counter {
-  grid-area: counter; /* Placing counter in the defined grid area */
-}
-
-#todos-footer .clear-btn {
-  grid-area: clear-btn; /* Placing clear-btn in the defined grid area */
+/* Empty image styles */
+#empty-image {
+  display: block;
+  margin: auto;
+  max-width: 70%;
 }

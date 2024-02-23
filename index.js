@@ -2,6 +2,7 @@
 
 // Variables
 let todosList = [];
+let emptyImage = document.createElement("img");
 const mainContainer = document.getElementById("container");
 const todosContainer = document.getElementById("todos-container");
 const addButton = document.getElementById("add-btn");
@@ -62,10 +63,21 @@ function createButton(iconClass) {
 // Display todos
 function displayTodos(todos) {
   todosContainer.innerHTML = "";
-  todos.forEach((todo) => {
-    const todoRow = createTodoRow(todo);
-    todosContainer.appendChild(todoRow);
-  });
+
+  if (todos.length === 0) {
+    // If todos list is empty then display the empty image
+    // To ensure the empty image is always appended to the todo container when needed
+    emptyImage.src = "images/1763838.png";
+    emptyImage.alt = "empty image";
+    emptyImage.id = "empty-image";
+    todosContainer.appendChild(emptyImage);
+  } else {
+    todos.forEach((todo) => {
+      const todoRow = createTodoRow(todo);
+      todosContainer.appendChild(todoRow);
+    });
+  }
+
   counter.textContent = `You have ${todos.length} tasks.`;
 }
 

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Metadata and stylesheets -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo List</title>
+    <!-- Font Awesome stylesheet -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -12,59 +14,59 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anta&family=Calistoga&family=Dancing+Script:wght@400..700&family=Fredoka:wght@300..700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Riot&family=Rozha+One&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Trochut:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anta&family=Calistoga&family=Dancing+Script:wght@400..700&family=Fredoka:wght@300..700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Riot&family=Rozha+One&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Trochut:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Google Fonts stylesheet -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Anta&family=Calistoga&family=Dancing+Script:wght@400..700&family=Domine:wght@400..700&family=Fredoka:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Riot&family=Rozha+One&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Trochut:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-
+    <!-- Custom stylesheet -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Main content -->
     <div id="container">
+      <!-- Title and subtitle -->
       <h1>Todo List</h1>
+      <p id="header-subtitle">Empower Your Productivity Journey</p>
+      <!-- Form for adding tasks -->
       <form id="input-container">
         <label for="todo-input" id="todo-label"></label>
-        <input type="text" id="todo-input" placeholder="Add a new task..." />
+        <input
+          type="text"
+          id="todo-input"
+          placeholder="Write down your next task..."
+        />
         <button id="add-btn" type="submit" aria-labelledby="add-button">
-          <i class="fa-solid fa-circle-plus"></i>
+          <i class="fa-solid fa-plus"></i>
         </button>
       </form>
+      <!-- Form for searching tasks -->
       <form id="search-container">
         <label for="text" id="todo-search"></label>
-        <input type="text" id="search-input" placeholder="Search for todo..." />
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search for a Task..."
+        />
         <button id="search-btn" type="submit" aria-labelledby="search-button">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </form>
-      <div id="todos-container">
-        <!-- <ul id="todos"></ul> -->
-        <!-- <img src="images/empty3.svg" alt="empty image" class="empty-image" /> -->
-      </div>
-
+      <!-- Container for displaying tasks -->
+      <div id="todos-container"></div>
+      <!-- Footer section -->
       <div id="todos-footer">
-        <hr />
+        <!-- Counter for displaying number of tasks -->
         <p id="counter"></p>
+        <!-- Button for clearing all tasks -->
         <button id="clear-btn" aria-labelledby="clear-button">
           <i class="fa-regular fa-trash-can"></i>
         </button>
       </div>
     </div>
+    <!-- JavaScript file -->
     <script src="index.js"></script>
   </body>
 </html>
