@@ -67,7 +67,7 @@ function displayTodos(todos) {
   if (todos.length === 0) {
     // If todos list is empty then display the empty image
     // To ensure the empty image is always appended to the todo container when needed
-    emptyImage.src = "/sda-2-online-javascript-todo-app/images/empty_image.png";
+    emptyImage.src = "./images/empty_image.png";
     emptyImage.alt = "empty image";
     emptyImage.id = "empty-image";
     todosContainer.appendChild(emptyImage);
@@ -164,7 +164,7 @@ addEventListener("DOMContentLoaded", () => {
     clearButton.addEventListener("click", clearAll);
 
     // Retrieve todos from local storage
-    todosList = JSON.parse(localStorage.getItem("todoList"));
+    todosList = JSON.parse(localStorage.getItem("todoList")) || [];
   } catch (error) {
     alert("Unknown error happened: " + error.message);
   } finally {
