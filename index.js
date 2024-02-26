@@ -101,16 +101,24 @@ function addTodo() {
 
 // Delete todo
 function deleteTodo(index) {
-  todosList.splice(index, 1);
-  displayTodos(todosList);
-  localStorage.setItem("todoList", JSON.stringify(todosList));
+  if (confirm("Are you sure you want to delete this task?")) {
+    todosList.splice(index, 1);
+    displayTodos(todosList);
+    localStorage.setItem("todoList", JSON.stringify(todosList));
+  } else {
+    return;
+  }
 }
 
 // Clear all todos
 function clearAll() {
-  todosList.splice(0, todosList.length);
-  displayTodos(todosList);
-  localStorage.setItem("todoList", JSON.stringify(todosList));
+  if (confirm("Are you sure you want to delete all tasks?")) {
+    todosList.splice(0, todosList.length);
+    displayTodos(todosList);
+    localStorage.setItem("todoList", JSON.stringify(todosList));
+  } else {
+    return;
+  }
 }
 
 // Search for todo
